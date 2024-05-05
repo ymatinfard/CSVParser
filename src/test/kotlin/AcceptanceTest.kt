@@ -20,6 +20,10 @@ class AcceptanceTest {
 
         assertEquals(
             expected,
-            readTable(lines).map { it.toMyData() })
+            readTableWithHeader(
+                headerLine = lines.first(),
+                lines = lines.drop(1),
+                splitter = separateOnComma
+            ).map { it.toMyData() })
     }
 }
